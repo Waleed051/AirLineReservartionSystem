@@ -2,20 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-//Waleed
-public class InternationalFlight extends JFrame
+
+public class InternationalFlight extends JFrame implements Runnable
 {
 	JComboBox CBFrom, CBTo, CBClass, CBAdult, CBChildren, CBInfant;
-	JLabel LFrom, LTo, LBookingDate, LClass, LAdult, LChildren, LInfant, LBookingDetails, LPassengerDetails, LDate, LImg1, LImg2, LNotes;
-	JTextField TFBookingDate;
+	JLabel LFrom, LTo, LBookingDate, LClass, LAdult, LChildren, LInfant, LBookingDetails, LPassengerDetails, LDate, LImg1, LImg2, LNotes, LBookedBy;
+	JTextField TFBookingDate, TFBookedBy;
 	Icon img1, img2;
 	JButton BFindFlight;
 	JPanel PPanel1, PPanel2;
 
 	LoginPage type1;
-
-	public InternationalFlight(LoginPage type1)
-	{
+public InternationalFlight(LoginPage type12) {
 		Container c =getContentPane();
 		c.setLayout(new BorderLayout());
 		String[] sItem1={"Trivandrum"};
@@ -30,6 +28,7 @@ public class InternationalFlight extends JFrame
 		LFrom = new JLabel("From          :");
 		LTo = new JLabel("To               :");
 		LBookingDate = new JLabel("Booking Date:");
+		LBookedBy = new JLabel("Booked By:");
 		LClass = new JLabel("Class         :");
 
 		CBFrom = new JComboBox(sItem1);
@@ -37,6 +36,7 @@ public class InternationalFlight extends JFrame
 		CBClass = new JComboBox(sItem3);
 
 		TFBookingDate = new JTextField(10);
+		TFBookedBy = new JTextField(10);
 		LDate = new JLabel("(DD/MM/YYYY)");
 		LDate.setForeground(Color.red);
 
@@ -56,6 +56,9 @@ public class InternationalFlight extends JFrame
 		LBookingDate.setBounds(14,160,100,20);
 		TFBookingDate.setBounds(100,160,100,20);
 		LDate.setBounds(210,160,100,20);
+		
+		LBookedBy.setBounds(20,190,100,20);
+		TFBookedBy.setBounds(100,190,100,20);
 
 		LClass.setBounds(20,220,100,20);
 		CBClass.setBounds(100,220,100,20);
@@ -71,6 +74,8 @@ public class InternationalFlight extends JFrame
 		PPanel1.add(CBTo);
 		PPanel1.add(LBookingDate);
 		PPanel1.add(TFBookingDate);
+		PPanel1.add(LBookedBy);
+		PPanel1.add(TFBookedBy);
 		PPanel1.add(LDate);
 		PPanel1.add(LClass);
 		PPanel1.add(CBClass);
@@ -88,9 +93,9 @@ public class InternationalFlight extends JFrame
 		setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
 		
 		
-
+		synchronized(this) {
 		LPassengerDetails=new JLabel("<html><b><font color=\"#C71585\">PassengerDetails</font></b></html>");
-
+		
 		LAdult = new JLabel("Adults(12+)");
 
 		LChildren = new JLabel("Children(2-11)");
@@ -143,11 +148,21 @@ public class InternationalFlight extends JFrame
 
 		BFindFlight.addActionListener(new button2(this, type1));
 	}
+		}
+	
 	public static void main(String args[])
 	{
 		LoginPage type1=null;
 		new InternationalFlight(type1);
+		InternationalFlight obj = new InternationalFlight(type1);
+	    Thread thread = new Thread(obj);
+	    thread.start();
 	}
+
+	
+	public void run(){}
+	
+	
 }
 
 class button2 implements ActionListener
@@ -165,6 +180,7 @@ class button2 implements ActionListener
 		String sTo = (String)type.CBTo.getSelectedItem();
 		String sClass = (String)type.CBClass.getSelectedItem();
 		String sBookingDate = type.TFBookingDate.getText();
+		String sBookedBy = type.TFBookedBy.getText();
 		Integer iPrice=0;
 		String sTime="";
 
@@ -174,7 +190,8 @@ class button2 implements ActionListener
 		Integer iInfant = Integer.parseInt((String)type.CBInfant.getSelectedItem());
 
 		int i = 0;
-
+		
+		synchronized(this) {
 		if(sClass.equals("Economic"))
 		{
 			try{
@@ -225,6 +242,7 @@ class button2 implements ActionListener
 		String[] sTempTo=new String[1250];
 		String[] sTempClass=new String[1250];
 		String[] sTempBookingDate=new String[1250];
+		String[] sTempBookedBy=new String[1250];
 		String[] sTempTime=new String[1250];
 		Integer[] iTempAdult=new Integer[1250];
 		Integer[] iTempChildren=new Integer[1250];
@@ -243,6 +261,7 @@ class button2 implements ActionListener
 				sTempTo[iCount] = save1.sTo;
 				sTempClass[iCount] = save1.sClass;
 				sTempBookingDate[iCount] = save1.sBookingDate;
+				sTempBookedBy[iCount] = save1.sBookedBy;
 				sTempTime[iCount] = save1.sTime;
 				iTempAdult[iCount] = save1.iAdult;
 				iTempChildren[iCount] = save1.iChildren;
@@ -272,15 +291,15 @@ class button2 implements ActionListener
 			int iChoice = JOptionPane.showConfirmDialog(null,"Seats available. Do you want to Book now?");
 			if(iChoice == JOptionPane.YES_OPTION)
 			{
-				new PrintTicket1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, iPrice, sTime);
+				new PrintTicket1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, sBookedBy, iPrice, sTime);
 			try
 			{
 //write into data
-				Save1 save2=new Save1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, iPrice, sTime);
+				Save1 save2=new Save1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, sBookedBy, iPrice, sTime);
 				ObjectOutputStream OOS1 = new ObjectOutputStream(new FileOutputStream("save1"));
 				for(i=0;i<iCount;i++)
 				{
-					Save1 temp1=new Save1(sTempFrom[i], sTempTo[i], sTempClass[i], iTempAdult[i], iTempChildren[i], iTempInfant[i], sTempBookingDate[i], iTempPrice[i], sTempTime[i]);
+					Save1 temp1=new Save1(sTempFrom[i], sTempTo[i], sTempClass[i], iTempAdult[i], iTempChildren[i], iTempInfant[i], sTempBookingDate[i], sTempBookedBy[i], iTempPrice[i], sTempTime[i]);
 					OOS1.writeObject(temp1);
 System.out.println(temp1);
 				}
@@ -301,10 +320,10 @@ System.out.println(temp1);
 
 class Save1 implements Serializable
 {
-	String sFrom, sTo, sClass, sBookingDate, sTime;
+	String sFrom, sTo, sClass, sBookingDate, sBookedBy, sTime;
 	Integer iPrice, iAdult, iChildren, iInfant;
 //	int iCount;
-	public Save1(String sFrom, String sTo, String sClass, Integer iAdult, Integer iChildren, Integer iInfant, String sBookingDate, Integer iPrice, String sTime)
+	public Save1(String sFrom, String sTo, String sClass, Integer iAdult, Integer iChildren, Integer iInfant, String sBookingDate, String sBookedBy, Integer iPrice, String sTime)
 	{
 		this.sFrom=sFrom;
 		this.sTo=sTo;
@@ -313,6 +332,7 @@ class Save1 implements Serializable
 		this.iChildren=iChildren;
 		this.iInfant=iInfant;
 		this.sBookingDate=sBookingDate;
+		this.sBookedBy=sBookedBy;
 		this.iPrice=iPrice;
 		this.sTime=sTime;
 //		this.iCount = iCount;
@@ -321,4 +341,5 @@ class Save1 implements Serializable
 	{
 		return sFrom+" "+sTo+" "+sClass+" "+iAdult+" "+iChildren+" "+iInfant+" "+sBookingDate+" "+iPrice+" "+sTime;
 	}
+}
 }

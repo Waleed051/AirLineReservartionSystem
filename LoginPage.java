@@ -14,12 +14,14 @@ public class LoginPage extends JFrame {
 
 	public boolean bCheck = true;
 
-	JLabel LDomesticFlight = new JLabel("<html><B>Domestic Flights</B></html>");
-	JLabel LInternationalFlight = new JLabel("<html><B>International Flights</B></html>");
+	JLabel LDomesticFlight = new JLabel("<html><B><em>Domestic Flights Information</em></B></html>");
+	JLabel LInternationalFlight = new JLabel("<html><B><em>International Flights Information</em></B></html>");
+	JLabel LAvailableClasses = new JLabel("<html><B>Available Travel Classes:</B></html>");
+
 
 	JLabel LUserName, LPassword, ltext;
 
-	JLabel LDomesticFlight1 = new JLabel("<html><B>Domestic Flight Booking</B></html>");
+	JLabel LDomesticFlight1 = new JLabel("<html>Domestic Flight Booking</B></html>");
 	JLabel LInternationalFlight1 = new JLabel("<html><B>International Flight Booking</B></html>");
 
 	JTextField TFUserName;
@@ -163,6 +165,7 @@ public class LoginPage extends JFrame {
 
 		LDomesticFlight.setBounds(60, 60, 100, 25);
 		LInternationalFlight.setBounds(60, 100, 120, 25);
+		LAvailableClasses.setBounds(60,150,175,25);
 
 		c.add(PFlightTypes);
 		c.add(PLogin);
@@ -170,6 +173,7 @@ public class LoginPage extends JFrame {
 
 		PFlightTypes.add(LDomesticFlight);
 		PFlightTypes.add(LInternationalFlight);
+		PFlightTypes.add(LAvailableClasses);
 
 		pack();
 		setVisible(true);
@@ -178,6 +182,7 @@ public class LoginPage extends JFrame {
 
 		LDomesticFlight.addMouseListener(new mouse1(this, true));
 		LInternationalFlight.addMouseListener(new mouse1(this, false));
+		LAvailableClasses.addMouseListener(new mouse1(this, true));
 
 		LDomesticFlight1.addMouseListener(new mouse3(this, true));
 		LInternationalFlight1.addMouseListener(new mouse3(this, false));
@@ -208,7 +213,9 @@ class button1 implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		cCheck = type.TPPassword.getPassword();
 		sCheck = type.TFUserName.getText();
+		try {
 		if ((sCheck1.equals(sCheck)) && check()) {
+			JOptionPane.showMessageDialog(null, "Sign In Success!");
 			type.PLogin.add(type.LDomesticFlight1);
 			type.PLogin.add(type.LInternationalFlight1);
 
@@ -220,7 +227,12 @@ class button1 implements ActionListener {
 
 			type.c.repaint();
 		} else {
+			throw new Exception();
+		}
+		}
+		catch(Exception Exception) {
 			JOptionPane.showMessageDialog(null, "Invalid username or password. Try again");
+			
 		}
 	}
 
@@ -247,6 +259,7 @@ class mouse1 extends MouseAdapter {
 	public void mouseEntered(MouseEvent e) {
 		type.LDomesticFlight.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		type.LInternationalFlight.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		type.LAvailableClasses.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 
 	public void mouseClicked(MouseEvent e) {
