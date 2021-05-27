@@ -7,8 +7,9 @@ public class PrintTicket1 extends JFrame
 	
 	
 	
-	public PrintTicket1(String sFrom, String sTo, String sClass, Integer iAdult, Integer iChildren, Integer iInfant, String sBookingDate, Integer iPrice, String sTime)
+	public PrintTicket1(String sFrom, String sTo, String sClass, Integer iAdult, Integer iChildren, Integer iInfant, String sBookingDate, String sBookedBy, Integer iPrice, String sTime)
 	{
+		String sTC = new String("MF04513");
 		
 		Container c=getContentPane();
 		c.setLayout(new BorderLayout());
@@ -33,15 +34,15 @@ public class PrintTicket1 extends JFrame
 		JLabel LAdult = new JLabel("<html><font color=\"#000000\">Adult &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+iAdult+"</font></html>" );
 		JLabel LChildren = new JLabel("<html><font color=\"#000000\">Children &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp;</font><font color=\"#778899\">"+ iChildren+"</font></html>" );
 		JLabel LInfant = new JLabel("<html><font color=\"#000000\">Infant &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+iInfant+"</font></html>" );
-		JLabel LWishes = new JLabel("<html><body><I><font color=\"#D2B48C\">Wish you a happy journy</font></I></body></html>");
+		JLabel LWishes = new JLabel("<html><body><I><font color=\"#D2B48C\">Wish you a happy journey</font></I></body></html>");
 
 
-		JLabel LTicketNo=new JLabel("<html><font color=\"#000000\">TicketNumber &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font></html>");
-		JLabel LBookedBy=new JLabel("<html><font color=\"#000000\">BookedBy &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font></html>");
+		JLabel LTicketNo=new JLabel("<html><font color=\"#000000\">TicketNumber &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+sTC+sBookedBy+"</font></html>");
+		JLabel LBookedBy=new JLabel("<html><font color=\"#000000\">BookedBy &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+sBookedBy+"</font></html>");
 
 		JLabel LEmpty = new JLabel("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		JLabel LDemo = new JLabel("<html><U><font color=\"#8FBC8F\">AirLine-Project Developed By</font></U></html>");
-		JLabel LTeam=new JLabel("<html><I><font color=\"#8FBC8F\">All Team Membrs</font></I></html>");
+		JLabel LTeam=new JLabel("<html><I><font color=\"#8FBC8F\">All Team Members</font></I></html>");
 		JLabel LRehman=new JLabel("<html><I><font color=\"#8FBC8F\">Muhammad AbdulRehman</font></I></html>");
 		JLabel LAshar=new JLabel("<html><I><font color=\"#8FBC8F\">Syed Ashar Ahmed</font></I></html>");
 		JLabel LMather=new JLabel("<html><I><font color=\"#8FBC8F\">Mather Afzal Shaikh</font></I></html>");
