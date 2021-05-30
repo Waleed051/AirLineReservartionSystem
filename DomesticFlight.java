@@ -14,20 +14,41 @@ public class DomesticFlight extends JFrame implements Runnable
 
 	LoginPage type1;
 	
+//	Mutable code
+	private String coursename;
+	DomesticFlight(String coursename)
+	{
+	this.coursename = coursename;
+	}
+	public String getName()
+	{
+	return coursename;
+	}
+	public void setName(String coursename)
+	{
+	this.coursename = coursename;
+	}
+	
+// End Mutable code
+
+	
 	public void run() {}
 	public DomesticFlight(LoginPage type1)
 	{
 		Container c =getContentPane();
 		c.setLayout(new BorderLayout());
-		String[] sItem1={"Trivandrum"};
-		String[] sItem2 ={ "Bangalore", "Chennai ", "Delhi", "Goa", "Hyderabad", "Kolkata", "Lucknow", "Mumbai", "Vishakapatnam" };
+		String[] sItem1={"Pakistan"};
+		String[] sItem2 ={ "Wakanda", "Asgurd ", "The Titan", "Xandar", "EGOS Planet", "Knowhere", "Sakaar", "Quantum Realm", "Nidavellir" };
 		String[] sItem3={"Economic","Business"};
 
 		this.type1 = type1;
 		PPanel1 = new JPanel(null);
-		PPanel1.setPreferredSize(new Dimension(500,200));
+		
+		
+		//Panel l1------------------------------------
+		PPanel1.setPreferredSize(new Dimension(400,200));
 
-		LBookingDetails = new JLabel("<html><b><font color=\"#C71585\">Booking Details</font></b></html>");
+		LBookingDetails = new JLabel("<html><b><h2><font color=\"#C71585\">Booking Details</font></h2></b></html>");
 		LFrom = new JLabel("From          :");
 		LTo = new JLabel("To               :");
 		LBookingDate = new JLabel("Booking Date:");
@@ -43,12 +64,12 @@ public class DomesticFlight extends JFrame implements Runnable
 		LDate = new JLabel("(DD/MM/YYYY)");
 		LDate.setForeground(Color.red);
 
-		img1=new ImageIcon("map1.jpg");
+		img1=new ImageIcon("Project 4/map1.jpg");
 		LImg1 = new JLabel(img1);
 
 		BFindFlight = new JButton("Find Flight");
 
-		LBookingDetails.setBounds(20,3,100,20);
+		LBookingDetails.setBounds(20,3,500,20);
 
 		LFrom.setBounds(20,40,100,20);
 		CBFrom.setBounds(100,40,100,20);
@@ -89,7 +110,10 @@ public class DomesticFlight extends JFrame implements Runnable
 		c.add(PPanel1,BorderLayout.WEST);
 
 		PPanel2 = new JPanel(null);
-		PPanel2.setPreferredSize(new Dimension(320,160));
+		
+		
+		// Panal l2 ----------------
+		PPanel2.setPreferredSize(new Dimension(400,160));
 		add(new JLabel("", SwingConstants.CENTER), BorderLayout.CENTER);
 		setSize(796, 572);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,12 +121,12 @@ public class DomesticFlight extends JFrame implements Runnable
 		
 		
 		synchronized(this) {
-		LPassengerDetails=new JLabel("<html><b><font color=\"#C71585\">PassengerDetails</font></b></html>");
+		LPassengerDetails=new JLabel("<html><b><h2><font color=\"#C71585\">PassengerDetails</font></h2></b></html>");
 
-		LAdult = new JLabel("Adults(12+)");
+		LAdult = new JLabel(" Adults(12+)");
 
-		LChildren = new JLabel("Children(2-11)");
-		LInfant = new JLabel("Infants(under 2)");
+		LChildren = new JLabel(" Children(2-11)");
+		LInfant = new JLabel(" Infants(under 2)");
 
 		String[] item4={"1","2","3","4","5","6"};
 		CBAdult = new JComboBox(item4);
@@ -113,11 +137,11 @@ public class DomesticFlight extends JFrame implements Runnable
 		String[] item6={"0","1","2","3"};
 		CBInfant = new JComboBox(item6);
 
-		img2 = new ImageIcon("note_bg.gif");
+		img2 = new ImageIcon("Project 4/note_bg.gif");
 		LImg2 = new JLabel(img2);
 		LNotes = new JLabel("<html><body><p>NOTE: Bookings with International Credit Cards <p> have temporarily been suspended.This Service<p> will resume shortly and we will have a notice<p> posted on our website.We regret any <p>inconvenience caused to our passengers.</body></html>");
 
-		LPassengerDetails.setBounds(40,3,100,20);
+		LPassengerDetails.setBounds(42,3,500,20);
 
 		LAdult.setBounds(40,40,100,20);
 		CBAdult.setBounds(140,40,100,20);
@@ -160,6 +184,14 @@ public class DomesticFlight extends JFrame implements Runnable
 		DomesticFlight obj = new DomesticFlight(type1);
 	    Thread thread = new Thread(obj);
 	    thread.start();
+	    System.out.println("Adding Previous course!");
+		DomesticFlight obj1 = new DomesticFlight("LA");
+		System.out.println("" +obj1.getName()+"\n");
+		
+		// update the name, this object is mutable
+//		System.out.println("Updating current course!");
+		obj1.setName("NY");
+		System.out.println("" +obj1.getName());
 	}
 }
 
@@ -173,6 +205,7 @@ class button3 extends Thread implements ActionListener
 		this.type1 = type1;
 	}
 	public void actionPerformed(ActionEvent e)
+
 	{
 		String sFrom = (String)type.CBFrom.getSelectedItem();
 		String sTo = (String)type.CBTo.getSelectedItem();
@@ -288,8 +321,33 @@ class button3 extends Thread implements ActionListener
 		}
 		else
 		{
+			DomesticFlight obj = new DomesticFlight("Are you sure you want to book ");
+			int Choice = JOptionPane.showConfirmDialog(null,obj.getName());
+			
+			
+			
+			
+			if(Choice== JOptionPane.NO_OPTION)
+			{
+				
+			}
+			
 			int iChoice = JOptionPane.showConfirmDialog(null,"Seats available. Do you want to Book now?");
-			if(iChoice == JOptionPane.YES_OPTION)
+			
+			 if(iChoice == JOptionPane.YES_OPTION)
+			{
+				new PrintTicket1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, sTime, iPrice, sTime);
+ 
+//			           if(Choice==JOptionPane.NO_OPTION){
+//			        	   System.exit(0);
+//				   }
+			 
+				}
+
+		else
+		{
+			int iChoice1 = JOptionPane.showConfirmDialog(null,"Seats available. Do you want to Book now?");
+			if(iChoice1 == JOptionPane.YES_OPTION)
 			{
 				new PrintTicket1(sFrom, sTo, sClass, iAdult, iChildren, iInfant, sBookingDate, sBookedBy, iPrice, sTime);
 			try
@@ -343,5 +401,6 @@ class Save2 implements Serializable
 	{
 		return sFrom+" "+sTo+" "+sClass+" "+iAdult+" "+iChildren+" "+iInfant+" "+sBookingDate+" "+iPrice+" "+sTime;
 	}
+}
 }
 	

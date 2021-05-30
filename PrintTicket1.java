@@ -24,7 +24,7 @@ public class PrintTicket1 extends JFrame
 		setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
 		
 
-		JLabel LTitle = new JLabel("<html><b><font color=\"#C71585\",size=\"7\">AirLine Ticket</font></b></html>");
+		JLabel LTitle = new JLabel("<html><b><font color=\"#C71585\",size=\"7\">Bifröst-AirLine Ticket</font></b></html>");
 		JLabel LFrom = new JLabel("<html><b><font color=\"#000000\">From &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font></b><font color=\"#778899\">"+ sFrom+"</font></html>" );
 		JLabel LTo = new JLabel("<html><font color=\"#000000\">To &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+sTo+"</font></html>");
 		JLabel LClass = new JLabel("<html><font color=\"#000000\">Class &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp;</font><font color=\"#778899\">"+sClass+"</font></html>" );
@@ -48,7 +48,7 @@ public class PrintTicket1 extends JFrame
 		JLabel LMather=new JLabel("<html><I><font color=\"#8FBC8F\">Mather Afzal Shaikh</font></I></html>");
 		JLabel LWaleed=new JLabel("<html><I><font color=\"#8FBC8F\">Muhammad Waleed</font></I></html>");
 
-		LTitle.setBounds(170,15,500,45);
+		LTitle.setBounds(150,15,500,45);
 		LFrom.setBounds(20,80,300,20);
 
 		LTo.setBounds(20,125,300,20);

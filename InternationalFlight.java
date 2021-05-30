@@ -16,15 +16,16 @@ public class InternationalFlight extends JFrame implements Runnable
 public InternationalFlight(LoginPage type12) {
 		Container c =getContentPane();
 		c.setLayout(new BorderLayout());
-		String[] sItem1={"Trivandrum"};
+		String[] sItem1={"Pakistan"};
 		String[] sItem2={"Bali","Bangkok","Cairo","CapeTown","Chicago","Dubai","Frankfurt","HongKong","Istanbul","London","LosAngeles","Melbourne","New York","Paris","Rome","SanFrancisco","shanghai","Singapore","Sydney","Toronto"};
 		String[] sItem3={"Economic","Business"};
 
 		this.type1 = type1;
 		PPanel1 = new JPanel(null);
-		PPanel1.setPreferredSize(new Dimension(500,200));
+		PPanel1.setPreferredSize(new Dimension(400,200));
 
-		LBookingDetails = new JLabel("<html><b><font color=\"#C71585\">Booking Details</font></b></html>");
+
+		LBookingDetails = new JLabel("<html><b><h2><font color=\"#C71585\">Booking Details</font></h2></b></html>");
 		LFrom = new JLabel("From          :");
 		LTo = new JLabel("To               :");
 		LBookingDate = new JLabel("Booking Date:");
@@ -40,12 +41,12 @@ public InternationalFlight(LoginPage type12) {
 		LDate = new JLabel("(DD/MM/YYYY)");
 		LDate.setForeground(Color.red);
 
-		img1=new ImageIcon("map1.jpg");
+		img1=new ImageIcon("Project 4/map1.jpg");
 		LImg1 = new JLabel(img1);
 
 		BFindFlight = new JButton("Find Flight");
 
-		LBookingDetails.setBounds(20,3,100,20);
+		LBookingDetails.setBounds(20,3,500,20);
 
 		LFrom.setBounds(20,40,100,20);
 		CBFrom.setBounds(100,40,100,20);
@@ -86,7 +87,7 @@ public InternationalFlight(LoginPage type12) {
 		c.add(PPanel1,BorderLayout.WEST);
 
 		PPanel2 = new JPanel(null);
-		PPanel2.setPreferredSize(new Dimension(320,160));
+		PPanel2.setPreferredSize(new Dimension(400,160));
 		add(new JLabel("", SwingConstants.CENTER), BorderLayout.CENTER);
 		setSize(796, 572);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,12 +95,12 @@ public InternationalFlight(LoginPage type12) {
 		
 		
 		synchronized(this) {
-		LPassengerDetails=new JLabel("<html><b><font color=\"#C71585\">PassengerDetails</font></b></html>");
+		LPassengerDetails=new JLabel("<html><b><h2><font color=\"#C71585\">PassengerDetails</font></h2></b></html>");
 		
-		LAdult = new JLabel("Adults(12+)");
+		LAdult = new JLabel(" Adults(12+)");
 
-		LChildren = new JLabel("Children(2-11)");
-		LInfant = new JLabel("Infants(under 2)");
+		LChildren = new JLabel(" Children(2-11)");
+		LInfant = new JLabel(" Infants(under 2)");
 
 		String[] item4={"1","2","3","4","5","6"};
 		CBAdult = new JComboBox(item4);
@@ -110,11 +111,11 @@ public InternationalFlight(LoginPage type12) {
 		String[] item6={"0","1","2","3"};
 		CBInfant = new JComboBox(item6);
 
-		img2 = new ImageIcon("note_bg.gif");
+		img2 = new ImageIcon("Project 4/note_bg.gif");
 		LImg2 = new JLabel(img2);
 		LNotes = new JLabel("<html><body><p>NOTE: Bookings with International Credit Cards <p> have temporarily been suspended.This Service<p> will resume shortly and we will have a notice<p> posted on our website.We regret any <p>inconvenience caused to our passengers.</body></html>");
 
-		LPassengerDetails.setBounds(40,3,100,20);
+		LPassengerDetails.setBounds(42,3,500,20);
 
 		LAdult.setBounds(40,40,100,20);
 		CBAdult.setBounds(140,40,100,20);

@@ -4,8 +4,6 @@ import java.awt.event.*;
 
 import javax.swing.text.*;
 
-import com.sun.javafx.embed.swing.Disposer;
-
 public class LoginPage extends JFrame {
 	Container c = getContentPane();
 	JPanel PFlightTypes = new JPanel(null);
@@ -33,36 +31,36 @@ public class LoginPage extends JFrame {
 	final Object[] col2 = { "From", "To", "Price", "Time" };
 	final Object[] col3 = { "From", "To", "Price", "Time" };
 
-	final Object[][] row1 = { { "Trivandrum", "Bangalore", "3125", "16:30" },
-			{ "Trivandrum", "Chennai ", "3225", "19:00" }, { "Trivandrum", "Delhi", "1425 ", "08:30" },
-			{ "Trivandrum", "Goa", "1025 ", "09:50" }, { "Trivandrum", "Hyderabad", "1525", "11:00" },
-			{ "Trivandrum", "Kolkata", "3825 ", "05:30" }, { "Trivandrum", "Lucknow", "3025 ", "05:30" },
-			{ "Trivandrum", "Mumbai", "1725", "12:00" }, { "Trivandrum", "Vishakapatnam", "3725", "19:00" } };
-	final Object[][] row2 = { { "Trivandrum", "Bali", "21485", "06:20" }, { "Trivandrum", "Bangkok", "9000", "20:45" },
-			{ "Trivandrum", "Cairo", "22975", "10:25" }, { "Trivandrum", "CapeTown", "42500", "16:45" },
-			{ "Trivandrum", "Chicago", "35000", "06:30" }, { "Trivandrum", "Dubai", "12000", "08:15" },
-			{ "Trivandrum", "Frankfurt", "18500", "06:50" }, { "Trivandrum", "HongKong", "20845", "12:00" },
-			{ "Trivandrum", "Istanbul", "22000", "10:45" }, { "Trivandrum", "London", "22600", "14:35" },
-			{ "Trivandrum", "LosAngeles", "35000", "22:00" }, { "Trivandrum", "Melbourne", "27800", "21:15" },
-			{ "Trivandrum", "New York", "32000", "08:50" }, { "Trivandrum", "Paris", "18500", "18:45" },
-			{ "Trivandrum", "Rome", "19900", "20:00" }, { "Trivandrum", "SanFrancisco", "35000", "12:00" },
-			{ "Trivandrum", "shanghai", "24430", "10:15" }, { "Trivandrum", "Singapore", "9000", "21:10" },
-			{ "Trivandrum", "Sydney", "27800", "12:00" }, { "Trivandrum", "Toronto", "35000", "17:00 " } };
-	final Object[][] row3 = { { "Trivandrum", "Bangalore", "9375", "16:30" },
-			{ "Trivandrum", "Chennai ", "9675", "19:00" }, { "Trivandrum", "Delhi", "4275", "08:30" },
-			{ "Trivandrum", "Goa", "3075", "09:50" }, { "Trivandrum", "Hyderabad", "4575", "11:00" },
-			{ "Trivandrum", "Kolkata", "11475", "05:30" }, { "Trivandrum", "Lucknow", "9075", "05:30" },
-			{ "Trivandrum", "Mumbai", "5175", "12:00" }, { "Trivandrum", "Vishakapatnam", "11175", "19:00" } };
-	final Object[][] row4 = { { "Trivandrum", "Bali", "64455", "06:20" }, { "Trivandrum", "Bangkok", "27000", "20:45" },
-			{ "Trivandrum", "Cairo", "68925", "10:25" }, { "Trivandrum", "CapeTown", "37500", "16:45" },
-			{ "Trivandrum", "Chicago", "105000", "06:30" }, { "Trivandrum", "Dubai", "36000", "08:15" },
-			{ "Trivandrum", "Frankfurt", "55500", "06:50" }, { "Trivandrum", "HongKong", "62535", "12:00" },
-			{ "Trivandrum", "Istanbul", "66000", "10:45" }, { "Trivandrum", "London", "67800", "14:35" },
-			{ "Trivandrum", "LosAngeles", "105000", "22:00" }, { "Trivandrum", "Melbourne", "83400", "21:15" },
-			{ "Trivandrum", "New York", "96000", "08:50" }, { "Trivandrum", "Paris", "55500", "18:45" },
-			{ "Trivandrum", "Rome", "59700", "20:00" }, { "Trivandrum", "SanFrancisco", "105000", "12:00" },
-			{ "Trivandrum", "shanghai", "73290", "10:15" }, { "Trivandrum", "Singapore", "27000", "21:10" },
-			{ "Trivandrum", "Sydney", "83400", "12:00" }, { "Trivandrum", "Toronto", "105000", "17:00" } };
+	final Object[][] row1 = { { "Pakistan", "Wakanda", "3125", "16:30" },
+			{ "Pakistan", "Asgard ", "3225", "19:00" }, { "Pakistan", "The Titan", "1425 ", "08:30" },
+			{ "Pakistan", "Xandar", "1025 ", "09:50" }, { "Pakistan", "EGOS Planet", "1525", "11:00" },
+			{ "Pakistan", "Knowhere", "3825 ", "05:30" }, { "Pakistan", "Sakaar", "3025 ", "05:30" },
+			{ "Pakistan", "Quantum Realm", "1725", "12:00" }, { "Pakistan", "Nidavellir", "3725", "19:00" } };
+	final Object[][] row2 = { { "Pakistan", "Bali", "21485", "06:20" }, { "Pakistan", "Bangkok", "9000", "20:45" },
+			{ "Pakistan", "Cairo", "22975", "10:25" }, { "Pakistan", "CapeTown", "42500", "16:45" },
+			{ "Pakistan", "Chicago", "35000", "06:30" }, { "Pakistan", "Dubai", "12000", "08:15" },
+			{ "Pakistan", "Frankfurt", "18500", "06:50" }, { "Pakistan", "HongKong", "20845", "12:00" },
+			{ "Pakistan", "Istanbul", "22000", "10:45" }, { "Pakistan", "London", "22600", "14:35" },
+			{ "Pakistan", "LosAngeles", "35000", "22:00" }, { "Pakistan", "Melbourne", "27800", "21:15" },
+			{ "Pakistan", "New York", "32000", "08:50" }, { "Pakistan", "Paris", "18500", "18:45" },
+			{ "Pakistan", "Rome", "19900", "20:00" }, { "Pakistan", "SanFrancisco", "35000", "12:00" },
+			{ "Pakistan", "shanghai", "24430", "10:15" }, { "Pakistan", "Singapore", "9000", "21:10" },
+			{ "Pakistan", "Sydney", "27800", "12:00" }, { "Pakistan", "Toronto", "35000", "17:00 " } };
+	final Object[][] row3 = { { "Pakistan", "Wakanda", "9375", "16:30" },
+			{ "Pakistan", "Asgard ", "9675", "19:00" }, { "Pakistan", "The Titan", "4275", "08:30" },
+			{ "Pakistan", "Xandar", "3075", "09:50" }, { "Pakistan", "EGOS Planet", "4575", "11:00" },
+			{ "Pakistan", "Knowhere", "11475", "05:30" }, { "Pakistan", "Sakaar", "9075", "05:30" },
+			{ "Pakistan", "Quantum Realm", "5175", "12:00" }, { "Pakistan", "Nidavellir", "11175", "19:00" } };
+	final Object[][] row4 = { { "Pakistan", "Bali", "64455", "06:20" }, { "Pakistan", "Bangkok", "27000", "20:45" },
+			{ "Pakistan", "Cairo", "68925", "10:25" }, { "Pakistan", "CapeTown", "37500", "16:45" },
+			{ "Pakistan", "Chicago", "105000", "06:30" }, { "Pakistan", "Dubai", "36000", "08:15" },
+			{ "Pakistan", "Frankfurt", "55500", "06:50" }, { "Pakistan", "HongKong", "62535", "12:00" },
+			{ "Pakistan", "Istanbul", "66000", "10:45" }, { "Pakistan", "London", "67800", "14:35" },
+			{ "Pakistan", "LosAngeles", "105000", "22:00" }, { "Pakistan", "Melbourne", "83400", "21:15" },
+			{ "Pakistan", "New York", "96000", "08:50" }, { "Pakistan", "Paris", "55500", "18:45" },
+			{ "Pakistan", "Rome", "59700", "20:00" }, { "Pakistan", "SanFrancisco", "105000", "12:00" },
+			{ "Pakistan", "shanghai", "73290", "10:15" }, { "Pakistan", "Singapore", "27000", "21:10" },
+			{ "Pakistan", "Sydney", "83400", "12:00" }, { "Pakistan", "Toronto", "105000", "17:00" } };
 
 	JTable TDomesticFlight = new JTable(row1, col1);
 	JTable TInternationalFlight = new JTable(row2, col2);
@@ -78,10 +76,10 @@ public class LoginPage extends JFrame {
 	JScrollPane JSP4 = new JScrollPane(TInternationalFlight1, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 			ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-	Icon img1 = new ImageIcon("img/economic.jpg");
-	Icon img2 = new ImageIcon("img/business.jpg");
-	Icon img3 = new ImageIcon("img/economic1.jpg");
-	Icon img4 = new ImageIcon("img/business1.jpg");
+	Icon img1 = new ImageIcon("Project 4/img/economic.jpg");
+	Icon img2 = new ImageIcon("Project 4/img/business.jpg");
+	Icon img3 = new ImageIcon("Project 4/img/economic1.jpg");
+	Icon img4 = new ImageIcon("Project 4/img/business1.jpg");
 
 	JLabel LEconomic = new JLabel("Economic", img1, SwingConstants.LEFT);
 	JLabel LBusiness = new JLabel("Business", img2, SwingConstants.LEFT);
@@ -116,7 +114,7 @@ public class LoginPage extends JFrame {
 
 		LUserName = new JLabel("  User Name ");
 		LPassword = new JLabel("  Password ");
-		ltext = new JLabel("<html><h1>Airline Reservation</h1></html>");
+		ltext = new JLabel("<html><h1><font color=\"#C71585\">Bifröst-Airline</font></h1></html>");
 		TFUserName = new JTextField(10);
 		TPPassword = new JPasswordField(10);
 		BLogin = new JButton("Sign In");
